@@ -43,10 +43,13 @@ function nextSequence() {
 	var randomNumber = Math.floor(Math.random()*4);    
     var randomChosenColor = buttonColor[randomNumber];
     gamePattern.push(randomChosenColor);
-    $("#"+randomChosenColor).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-    playSound(randomChosenColor);
     
-    
+    for(let a = 0; a < gamePattern.length ; a++){
+        setTimeout(function (){
+          $("#"+gamePattern[a]).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+          playSound(gamePattern[a]);
+        }, a * 650)
+      } 
 }
 
 function checkAnswer(currentLevel)
